@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Silent Descent - Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  /* Background video & fallback image */
+  #bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+  }
+  #bg-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(0.4);
+    z-index: -3;
+  }
+
+  header {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(30, 20, 50, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(159,122,211,0.8);
+    z-index: 1;
+    padding: 10px 0;
+  }
+
+  .dropdown-content a {
+    color: #d4b3ff;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #8e63d8;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #b9a0ffaa;
+  }
+
+  .panel {
+    background: rgba(30, 20, 50, 0.85);
+    border-radius: 15px;
+    padding: 25px 30px;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    box-shadow: 0 0 15px rgba(159, 122, 211, 0.6);
+  }
+
+  .panel h2 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .panel p {
+    font-weight: 500;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #d4caff;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background video and fallback image -->
+<video id="bg-video" autoplay muted loop playsinline style="display:none"></video>
+<div id="bg-image"></div>
+
+<header>
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="Untitled-1.html">Story</a>
+      <a href="downoads.html">Buy</a>
+      <a href="signup.html">Sign In / Sign Up</a>
+      <a href="profile.html">Profile</a>
+            <a href="updates.html">Updates</a>
+                  <a href="status.html">status</a>
+    </div>
+  </div>
+</header>
+
+<h1>SILENT DESCENT: AETHER-9</h1>
+
+<div class="panel">
+  <h2>ACT I: The Mission</h2>
+  <p>Aether-9 launched with four crew members: Commander Elena Schneider, Dr. Luis Hernández, Engineer Naomi Mason, and Cosmonaut Sergei Volkov. Their assignment was a six-month orbital survey mission to deploy climate-monitoring satellites and conduct upper-atmosphere biological research. The launch was textbook-perfect, and for the first four and a half months, everything worked flawlessly.</p>
+  <p>The crew adjusted to life in orbit. They conducted experiments, maintained the ship, and documented stunning visuals of Earth from above. Schneider kept the team focused, Hernández managed the experimental greenhouse unit, Mason ran daily diagnostics, and Volkov monitored navigation and propulsion systems.</p>
+  <p>Until day 139 — when the systems began to fail.</p>
+</div>
+
+<div class="panel">
+  <h2>ACT II: Crisis in Orbit</h2>
+  <p>It started with a flicker. Then came the surge. A cascading failure crippled Aether-9’s guidance system. The crew scrambled. Mason and Volkov tore through wiring panels, rerouting power manually. Schneider issued a Level 2 Emergency Alert. Communications with Earth dropped to static.</p>
+  <p>Schneider initiated emergency deorbit — a last-resort maneuver. With limited control, they aimed for the Pacific corridor. Volkov inputted manual reentry vectors. The heat shields groaned under pressure. Hernández clung to the straps, eyes shut in prayer.</p>
+  <p>They lost orientation. The ship spun. Then — blackout.</p>
+</div>
+
+<div class="panel">
+  <h2>ACT III: Crash Landing</h2>
+  <p>The Aether-9 broke through the clouds over a storm-tossed ocean. Without functioning parachutes, it plummeted uncontrolled. A dense green shape loomed below — land.</p>
+  <p>The craft skimmed a ridge, tore through treetops, and finally slammed into a muddy ravine. The capsule cracked but didn’t break. Schneider was the first to stir. Mason’s leg was shattered. Volkov’s head bled. Hernández pulled them all out.</p>
+  <p>They had survived reentry — only to find themselves alone on an uncharted island.</p>
+</div>
+
+<div class="panel">
+  <h2>ACT IV: The Island</h2>
+  <p>The island was untamed. Towering ferns, screeching insects, and strange animal tracks surrounded them. With Mason injured, Schneider and Volkov scouted. They found freshwater. Hernández treated wounds. They scavenged the wreck for rations, water filters, and solar blankets.</p>
+  <p>Using reflective panels from the ship, Mason rigged a large SOS signal. Volkov rebuilt a battery array to power the damaged beacon for short bursts. The air was thick, wet, and electric with danger. Yet the team worked like clockwork. They had trained for this — not the island, but survival.</p>
+  <p>They documented the island’s flora. Hernández discovered species previously unknown. Mason kept logs. Volkov slept in two-hour shifts. Schneider never stopped watching the sky.</p>
+  <p>But as days turned into weeks, and the weeks blurred together, rescue never came. No more signals. No more sightings. Only storms, the howling wind, and the slow decay of their tech. Nature began to reclaim the wreck.</p>
+</div>
+
+<div class="panel">
+  <h2>ACT V: No Way Out</h2>
+  <p>They built a long-term shelter. Learned to fish. Foraged carefully. Hernández mapped parts of the island, still hoping to find high ground or signs of passing vessels. Mason constructed a solar distiller from scraps. Volkov grew quieter, more observant.</p>
+  <p>Time lost meaning. The Aether-9 crew had not been forgotten by the world — but search efforts failed. The island was remote beyond imagination, surrounded by shifting currents and shielded by electromagnetic interference that killed most modern tracking devices.</p>
+  <p>Each night, they looked at the stars, wondering if they'd ever leave. Their story became not one of survival for rescue — but survival to tell their own history.</p>
+  <p>And so the story goes on. Still stranded. Still alive. Still waiting.</p>
+</div>
+
+<script>
+  // Change these URLs to your preferred background video or image:
+  const bgVideoURL = null; // e.g. 'https://yourcdn.com/space-video.mp4' or null to disable video
+  const bgImageURL = 'https://media1.tenor.com/m/RpTvn4c0qekAAAAC/driving-faded.gif'; // fallback background image
+
+  const videoEl = document.getElementById('bg-video');
+  const imageEl = document.getElementById('bg-image');
+
+  if(bgVideoURL) {
+    videoEl.src = bgVideoURL;
+    videoEl.style.display = 'block';
+    imageEl.style.display = 'none';
+  } else {
+    imageEl.style.backgroundImage = `url('${bgImageURL}')`;
+    videoEl.style.display = 'none';
+    imageEl.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
