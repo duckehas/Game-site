@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Silent Descent - Download</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  /* Background video & fallback image */
+  #bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+  }
+  #bg-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(0.4);
+    z-index: -3;
+  }
+
+  header {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(30, 20, 50, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(159,122,211,0.8);
+    z-index: 1;
+    padding: 10px 0;
+  }
+
+  .dropdown-content a {
+    color: #d4b3ff;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #8e63d8;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #b9a0ffaa;
+  }
+
+  .download-panel {
+    background: rgba(30, 20, 50, 0.85);
+    border-radius: 15px;
+    padding: 25px 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(159, 122, 211, 0.6);
+    text-align: center;
+  }
+
+  .download-button {
+    background-color: #8e63d8;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+
+  .download-button:hover {
+    background-color: #a178e5;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #d4caff;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background video and fallback image -->
+<video id="bg-video" autoplay muted loop playsinline style="display:none"></video>
+<div id="bg-image"></div>
+
+<header>
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="Untitled-1.html">Story</a>
+      <a href="downoads.html">Buy</a>
+      <a href="signup.html">Sign In / Sign Up</a>
+      <a href="profile.html">Profile</a>
+            <a href="updates.html">Updates</a>
+                  <a href="status.html">status</a>
+    </div>
+  </div>
+</header>
+
+<h1>Download Silent Descent</h1>
+
+<div class="download-panel">
+  <p>Thank you for your interest in Silent Descent. Below you can find the latest version of the game along with the system requirements.</p>
+  <p><strong>System Requirements:</strong></p>
+  <ul style="text-align:left; max-width: 350px; margin: 10px auto; color: #d4b3ff;">
+    <li>OS: Windows 10 or later / macOS 10.14+</li>
+    <li>Processor: Intel i5 or equivalent</li>
+    <li>Memory: 8 GB RAM</li>
+    <li>Storage: 5 GB free space</li>
+    <li>Graphics: Dedicated GPU with 2GB VRAM</li>
+  </ul>
+  <button class="download-button" onclick="window.open('https://example.com/silent-descent-latest.zip', '_blank')">Buy now</button>
+</div>
+
+<script>
+  // Background URLs
+  const bgVideoURL = null; // Set your video URL or null
+  const bgImageURL = 'https://media1.tenor.com/m/RpTvn4c0qekAAAAC/driving-faded.gif';
+
+  const videoEl = document.getElementById('bg-video');
+  const imageEl = document.getElementById('bg-image');
+
+  if(bgVideoURL) {
+    videoEl.src = bgVideoURL;
+    videoEl.style.display = 'block';
+    imageEl.style.display = 'none';
+  } else {
+    imageEl.style.backgroundImage = `url('${bgImageURL}')`;
+    videoEl.style.display = 'none';
+    imageEl.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

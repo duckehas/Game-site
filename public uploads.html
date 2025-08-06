@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Public Uploads - Engine6.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* Same base styling as upload page for consistency */
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #3b3b98, #2f3640, #8c7ae6, #273c75);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: white;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  @keyframes gradient {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+  h1 {
+    margin: 40px 0 20px;
+    font-size: 2.8rem;
+    text-shadow: 0 0 20px rgba(255 255 255 / 0.3);
+  }
+  /* Dropdown menu styles (same as before) */
+  .menu-container {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 999;
+    user-select: none;
+  }
+  .menu-btn {
+    width: 38px;
+    height: 28px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  .menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .menu-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  .dropdown-menu {
+    margin-top: 12px;
+    background: rgba(108, 99, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.5);
+    width: 180px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .dropdown-menu.show {
+    display: flex;
+  }
+  .dropdown-menu button {
+    background: transparent;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1rem;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255 255 255 / 0.15);
+  }
+  .dropdown-menu button:hover {
+    background-color: rgba(255 255 255 / 0.15);
+  }
+  .dropdown-menu button:last-child {
+    border-bottom: none;
+  }
+  /* Files grid */
+  .files-wrapper {
+    width: 90vw;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .file-panel {
+    background: rgba(255 255 255 / 0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    width: 280px;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .file-panel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(108, 99, 255, 0.7);
+  }
+  .file-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+  }
+  .file-info {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+  .file-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .btn-download, .btn-copy {
+    cursor: pointer;
+    background: #6c63ff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 0 12px rgba(108 99 255 / 0.7);
+    transition: background-color 0.3s ease;
+  }
+  .btn-download:hover, .btn-copy:hover {
+    background-color: #4e44c0;
+  }
+  .public-label {
+    position: absolute;
+    top: 12px; right: 15px;
+    background: #6c63ff;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 16px;
+    box-shadow: 0 0 10px #6c63ff;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Dropdown Menu -->
+<div class="menu-container">
+  <div id="menuBtn" class="menu-btn" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="dropdownMenu" class="dropdown-menu" role="menu" aria-hidden="true">
+    <button onclick="location.href='index.html'">Home</button>
+    <button onclick="location.href='upload.html'">Uploads</button>
+    <button onclick="location.href='public.html'">Public Uploads</button>
+    <button onclick="location.href='signin.html'">Sign In</button>
+    <button onclick="location.href='signup.html'">Sign Up</button>
+  </div>
+</div>
+
+<h1>Public Uploads - Engine6.0</h1>
+
+<div class="files-wrapper" id="filesWrapper">
+  <!-- Public file panels appear here -->
+</div>
+
+<script>
+  // Dropdown menu toggle code
+  const menuBtn = document.getElementById('menuBtn');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+
+  function closeMenu() {
+    menuBtn.classList.remove('open');
+    dropdownMenu.classList.remove('show');
+    dropdownMenu.setAttribute('aria-hidden', 'true');
+  }
+
+  function toggleMenu() {
+    const isOpen = dropdownMenu.classList.contains('show');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menuBtn.classList.add('open');
+      dropdownMenu.classList.add('show');
+      dropdownMenu.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  document.addEventListener('click', () => {
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  // IndexedDB setup
+  let db;
+  const DB_NAME = 'Engine6FilesDB';
+  const STORE_NAME = 'filesStore';
+
+  async function openDb() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, 1);
+      request.onerror = () => reject('DB open failed');
+      request.onsuccess = () => {
+        db = request.result;
+        resolve(db);
+      };
+      request.onupgradeneeded = e => {
+        db = e.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          const store = db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+          store.createIndex('timestamp', 'timestamp', { unique: false });
+          store.createIndex('isPublic', 'isPublic', { unique: false });
+        }
+      };
+    });
+  }
+
+  // Fixed getPublicFiles with fallback filter
+  async function getPublicFiles() {
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+
+      if (!store.indexNames.contains('isPublic')) {
+        // No index, fallback to manual filtering
+        const request = store.getAll();
+        request.onsuccess = () => {
+          const allFiles = request.result;
+          resolve(allFiles.filter(f => f.isPublic === true));
+        };
+        request.onerror = () => reject('Failed to get public files');
+        return;
+      }
+
+      try {
+        const index = store.index('isPublic');
+        const range = IDBKeyRange.only(true);
+        const request = index.getAll(range);
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject('Failed to get public files');
+      } catch (e) {
+        console.warn('IDBKeyRange.only(true) failed, falling back to manual filter', e);
+        const request = store.getAll();
+        request.onsuccess = () => {
+          const allFiles = request.result;
+          resolve(allFiles.filter(f => f.isPublic === true));
+        };
+        request.onerror = () => reject('Failed to get public files');
+      }
+    });
+  }
+
+  function renderFiles(files) {
+    const wrapper = document.getElementById('filesWrapper');
+    wrapper.innerHTML = '';
+    if (!files.length) {
+      wrapper.innerHTML = '<p style="opacity:0.6;">No public files available yet.</p>';
+      return;
+    }
+    files.sort((a,b) => b.timestamp - a.timestamp);
+    for (const file of files) {
+      const panel = document.createElement('div');
+      panel.className = 'file-panel';
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'file-header';
+      nameEl.textContent = file.name;
+
+      const sizeMB = (file.size / (1024*1024)).toFixed(2);
+      const dateStr = new Date(file.timestamp).toLocaleString();
+      const infoEl = document.createElement('div');
+      infoEl.className = 'file-info';
+      infoEl.textContent = `Size: ${sizeMB} MB • Uploaded: ${dateStr}`;
+
+      const labelEl = document.createElement('div');
+      labelEl.className = 'public-label';
+      labelEl.textContent = 'Public';
+
+      const btnDownload = document.createElement('button');
+      btnDownload.className = 'btn-download';
+      btnDownload.textContent = 'Download';
+      btnDownload.title = 'Download this file';
+      btnDownload.onclick = () => {
+        const blob = new Blob([file.data], { type: file.type });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const btnCopy = document.createElement('button');
+      btnCopy.className = 'btn-copy';
+      btnCopy.textContent = 'Copy Link';
+      btnCopy.title = 'Copy download link (valid until page unload)';
+      btnCopy.onclick = () => {
+        const blob = new Blob([file.data], { type: file.type });
+        const url = URL.createObjectURL(blob);
+        navigator.clipboard.writeText(url).then(() => {
+          btnCopy.textContent = 'Copied!';
+          setTimeout(() => btnCopy.textContent = 'Copy Link', 1500);
+        });
+      };
+
+      const btnWrapper = document.createElement('div');
+      btnWrapper.className = 'file-buttons';
+      btnWrapper.appendChild(btnDownload);
+      btnWrapper.appendChild(btnCopy);
+
+      panel.appendChild(nameEl);
+      panel.appendChild(infoEl);
+      panel.appendChild(labelEl);
+      panel.appendChild(btnWrapper);
+
+      wrapper.appendChild(panel);
+    }
+  }
+
+  // Initialize DB and fetch public files
+  openDb()
+    .then(getPublicFiles)
+    .then(renderFiles)
+    .catch(err => {
+      console.error('DB Error:', err);
+      alert('Failed to load public files.');
+    });
+</script>
+
+</body>
+</html>

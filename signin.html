@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In - Engine6.0</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* (Your existing CSS unchanged) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #3b3b98, #2f3640, #8c7ae6, #273c75);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .login-panel {
+      width: 350px;
+      padding: 45px 35px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 25px;
+      backdrop-filter: blur(25px);
+      color: white;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-panel h1 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 15px rgba(108, 99, 255, 0.7);
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, #6c63ff, #3b3b98);
+      color: white;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+      font-size: 1rem;
+      box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(108, 99, 255, 0.7);
+    }
+
+    .links {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .links a {
+      color: #dcdcff;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .links a:hover {
+      color: white;
+      text-shadow: 0 0 10px #6c63ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-panel">
+    <h1>Sign In</h1>
+    <form id="signin-form">
+      <input type="text" placeholder="Username or Email" required />
+      <input type="password" placeholder="Password" required />
+      <button class="btn" type="submit">Sign In</button>
+    </form>
+    <div class="links">
+      <p>
+        Don't have an account?
+        <a href="signup.html">Sign Up</a>
+      </p>
+      <p><a href="index.html">Back to Home</a></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signin-form');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const enteredUser = form.querySelector('input[type="text"]').value.trim();
+      const enteredPass = form.querySelector('input[type="password"]').value;
+
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (!storedUser) {
+        alert('No account found. Please sign up first.');
+        return;
+      }
+
+      if (
+        (enteredUser === storedUser.username || enteredUser === storedUser.email) &&
+        enteredPass === storedUser.password
+      ) {
+        // Login success
+        window.location.href = 'uploads.html';
+      } else {
+        alert('Invalid username/email or password.');
+      }
+    });
+  </script>
+</body>
+</html>

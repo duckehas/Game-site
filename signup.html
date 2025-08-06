@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Silent Descent - Sign In / Sign Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  /* Background video & fallback image */
+  #bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+  }
+  #bg-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(0.4);
+    z-index: -3;
+  }
+
+  header {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(30, 20, 50, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(159,122,211,0.8);
+    z-index: 1;
+    padding: 10px 0;
+  }
+
+  .dropdown-content a {
+    color: #d4b3ff;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #8e63d8;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #b9a0ffaa;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto 30px;
+    background: rgba(30, 20, 50, 0.85);
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0 0 15px rgba(159, 122, 211, 0.6);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    background-color: #8e63d8;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 12px 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #a178e5;
+  }
+
+  .message {
+    text-align: center;
+    margin-bottom: 15px;
+    min-height: 20px;
+    font-weight: 600;
+  }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: #b9a0ff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .form-section {
+    display: none;
+  }
+
+  .form-section.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background video and fallback image -->
+<video id="bg-video" autoplay muted loop playsinline style="display:none"></video>
+<div id="bg-image"></div>
+
+<header>
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="index.html">Story</a>
+      <a href="download.html">Download</a>
+      <a href="auth.html">Sign In / Sign Up</a>
+      <a href="profile.html">Profile</a>
+    </div>
+  </div>
+</header>
+
+<h1>Sign In / Sign Up</h1>
+
+<div class="message" id="auth-message"></div>
+
+<!-- Sign In Form -->
+<form id="signInForm" class="form-section active">
+  <label for="signin-username">Username</label>
+  <input type="text" id="signin-username" required autocomplete="username" />
+  <label for="signin-password">Password</label>
+  <input type="password" id="signin-password" required autocomplete="current-password" />
+  <button type="submit">Sign In</button>
+  <p style="text-align:center; margin-top: 15px;">
+    Don't have an account? <button type="button" id="showSignUp" class="toggle-btn">Sign Up</button>
+  </p>
+</form>
+
+<!-- Sign Up Form -->
+<form id="signUpForm" class="form-section">
+  <label for="signup-username">Choose Username</label>
+  <input type="text" id="signup-username" required autocomplete="username" />
+  <label for="signup-password">Choose Password</label>
+  <input type="password" id="signup-password" required autocomplete="new-password" />
+  <label for="signup-confirm">Confirm Password</label>
+  <input type="password" id="signup-confirm" required autocomplete="new-password" />
+  <button type="submit">Sign Up</button>
+  <p style="text-align:center; margin-top: 15px;">
+    Already have an account? <button type="button" id="showSignIn" class="toggle-btn">Sign In</button>
+  </p>
+</form>
+
+<script>
+  // Background URLs
+  const bgVideoURL = null; // Set your video URL or null
+  const bgImageURL = 'https://media1.tenor.com/m/RpTvn4c0qekAAAAC/driving-faded.gif';
+
+  const videoEl = document.getElementById('bg-video');
+  const imageEl = document.getElementById('bg-image');
+
+  if(bgVideoURL) {
+    videoEl.src = bgVideoURL;
+    videoEl.style.display = 'block';
+    imageEl.style.display = 'none';
+  } else {
+    imageEl.style.backgroundImage = `url('${bgImageURL}')`;
+    videoEl.style.display = 'none';
+    imageEl.style.display = 'block';
+  }
+
+  // Toggle forms
+  const signInForm = document.getElementById('signInForm');
+  const signUpForm = document.getElementById('signUpForm');
+  const showSignUpBtn = document.getElementById('showSignUp');
+  const showSignInBtn = document.getElementById('showSignIn');
+  const authMessage = document.getElementById('auth-message');
+
+  showSignUpBtn.onclick = () => {
+    signInForm.classList.remove('active');
+    signUpForm.classList.add('active');
+    authMessage.textContent = '';
+  };
+
+  showSignInBtn.onclick = () => {
+    signUpForm.classList.remove('active');
+    signInForm.classList.add('active');
+    authMessage.textContent = '';
+  };
+
+  // LocalStorage users management
+  function getUsers() {
+    return JSON.parse(localStorage.getItem('sd_users') || '{}');
+  }
+
+  function saveUsers(users) {
+    localStorage.setItem('sd_users', JSON.stringify(users));
+  }
+
+  // Sign Up
+  signUpForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const username = document.getElementById('signup-username').value.trim();
+    const password = document.getElementById('signup-password').value;
+    const confirm = document.getElementById('signup-confirm').value;
+
+    if(password !== confirm) {
+      authMessage.style.color = 'red';
+      authMessage.textContent = "Passwords don't match.";
+      return;
+    }
+
+    if(username.length < 3) {
+      authMessage.style.color = 'red';
+      authMessage.textContent = "Username must be at least 3 characters.";
+      return;
+    }
+
+    let users = getUsers();
+    if(users[username]) {
+      authMessage.style.color = 'red';
+      authMessage.textContent = "Username already taken.";
+      return;
+    }
+
+    users[username] = {
+      password: password,
+      profile: {
+        displayName: username,
+        bio: '',
+        avatarURL: ''
+      }
+    };
+    saveUsers(users);
+    authMessage.style.color = '#4caf50';
+    authMessage.textContent = 'Account created! You can now sign in.';
+    signUpForm.reset();
+    setTimeout(() => {
+      signUpForm.classList.remove('active');
+      signInForm.classList.add('active');
+      authMessage.textContent = '';
+    }, 1800);
+  });
+
+  // Sign In
+  signInForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const username = document.getElementById('signin-username').value.trim();
+    const password = document.getElementById('signin-password').value;
+    let users = getUsers();
+
+    if(!users[username]) {
+      authMessage.style.color = 'red';
+      authMessage.textContent = 'User not found.';
+      return;
+    }
+    if(users[username].password !== password) {
+      authMessage.style.color = 'red';
+      authMessage.textContent = 'Incorrect password.';
+      return;
+    }
+    authMessage.style.color = '#4caf50';
+    authMessage.textContent = 'Sign in successful! Redirecting...';
+    localStorage.setItem('sd_signedInUser', username);
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1200);
+  });
+</script>
+
+</body>
+</html>

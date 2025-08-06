@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Silent Descent - Status</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #6a4f8b, #9f7ad3);
+    overflow-x: hidden;
+  }
+  body {
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  header {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(30, 20, 50, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(159,122,211,0.8);
+    z-index: 1;
+    padding: 10px 0;
+  }
+  .dropdown-content a {
+    color: #d4b3ff;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+  .dropdown-content a:hover {
+    background-color: #8e63d8;
+    color: white;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #b9a0ffaa;
+  }
+  #statusList {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(30, 20, 50, 0.85);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(159, 122, 211, 0.6);
+  }
+  .status-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(159, 122, 211, 0.3);
+    padding: 15px 0;
+    font-size: 1.1rem;
+  }
+  .status-item:last-child {
+    border-bottom: none;
+  }
+  .status-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  }
+  .status-online {
+    background-color: #4CAF50;
+    box-shadow: 0 0 10px #4CAF50;
+  }
+  .status-offline {
+    background-color: #f44336;
+    box-shadow: 0 0 10px #f44336;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="Untitled-1.html">Story</a>
+      <a href="downoads.html">Buy</a>
+      <a href="signup.html">Sign In / Sign Up</a>
+      <a href="profile.html">Profile</a>
+            <a href="updates.html">Updates</a>
+                  <a href="status.html">status</a>
+    </div>
+  </div>
+</header>
+
+<h1>Silent Descent - System Status</h1>
+
+<div id="statusList" aria-live="polite" aria-label="System status list">
+  <div class="status-item">
+    <span>Game Server</span>
+    <span class="status-dot status-online" aria-label="Game Server is online"></span>
+  </div>
+  <div class="status-item">
+    <span>Authentication Service</span>
+    <span class="status-dot status-online" aria-label="Authentication Service is online"></span>
+  </div>
+  <div class="status-item">
+    <span>Matchmaking</span>
+    <span class="status-dot status-offline" aria-label="Matchmaking is offline"></span>
+  </div>
+  <div class="status-item">
+    <span>Cloud Saves</span>
+    <span class="status-dot status-online" aria-label="Cloud Saves is online"></span>
+  </div>
+  <div class="status-item">
+    <span>Game Updates API</span>
+    <span class="status-dot status-online" aria-label="Game Updates API is online"></span>
+  </div>
+</div>
+
+</body>
+</html>

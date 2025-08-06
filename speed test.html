@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Engine6.0 - Internet Speed Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #3b3b98, #2f3640, #8c7ae6, #273c75);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: white;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  @keyframes gradient {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+
+  .panel {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    text-align: center;
+    margin-bottom: 25px;
+    width: 340px;
+  }
+
+  .result {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+
+  button {
+    background: #6c63ff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(108,99,255,0.4);
+    transition: 0.3s;
+    margin-top: 20px;
+  }
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(108,99,255,0.7);
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 500px;
+    height: 420px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+</style>
+</head>
+<body>
+
+<h1>Engine6.0 Speed Test</h1>
+
+<div class="panel">
+  <p>Check your <b>ping</b>, <b>download</b>, <b>upload</b> speeds and <b>FPS</b></p>
+  <iframe src="https://librespeed.org/#custom"></iframe>
+</div>
+
+</body>
+</html>

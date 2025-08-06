@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Silent Descent - Changelog</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #6a4f8b, #9f7ad3);
+    overflow-x: hidden;
+  }
+  body {
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+  }
+  header {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropbtn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: rgba(30, 20, 50, 0.95);
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(159,122,211,0.8);
+    z-index: 1;
+    padding: 10px 0;
+  }
+  .dropdown-content a {
+    color: #d4b3ff;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+  .dropdown-content a:hover {
+    background-color: #8e63d8;
+    color: white;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #b9a0ffaa;
+  }
+  #changelog {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(30, 20, 50, 0.85);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(159, 122, 211, 0.6);
+  }
+  .changelog-item {
+    border-bottom: 1px solid rgba(159, 122, 211, 0.3);
+    padding: 12px 0;
+  }
+  .changelog-item:last-child {
+    border-bottom: none;
+  }
+  .changelog-date {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .changelog-text {
+    font-size: 1rem;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+  <div class="dropdown">
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <a href="Untitled-1.html">Story</a>
+      <a href="downoads.html">Buy</a>
+      <a href="signup.html">Sign In / Sign Up</a>
+      <a href="profile.html">Profile</a>
+            <a href="updates.html">Updates</a>
+                  <a href="status.html">status</a>
+  </div>
+</header>
+
+<h1>Silent Descent - Changelog</h1>
+
+<div id="changelog" aria-live="polite" aria-label="Game changelog">
+  <div class="changelog-item">
+    <div class="changelog-date">August 1, 2025</div>
+    <div class="changelog-text">
+- Added new island exploration missions  
+- Improved graphics performance and fixed minor bugs  
+- Updated UI with smoother animations
+    </div>
+  </div>
+  <div class="changelog-item">
+    <div class="changelog-date">July 15, 2025</div>
+    <div class="changelog-text">
+- Implemented basic multiplayer mode (beta)  
+- Fixed crash when entering the jungle biome  
+- Added new collectible items
+    </div>
+  </div>
+  <div class="changelog-item">
+    <div class="changelog-date">July 1, 2025</div>
+    <div class="changelog-text">
+- Initial game release with main storyline and survival mechanics  
+- Added user profiles and inventory system
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
